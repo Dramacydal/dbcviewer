@@ -13,11 +13,17 @@ namespace DBCViewer
 {
     partial class MainForm
     {
+        private string lastPath = "";
+
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (lastPath.Length > 0)
+                openFileDialog1.InitialDirectory = lastPath;
+
             if (openFileDialog1.ShowDialog() != DialogResult.OK)
                 return;
 
+            lastPath = Path.GetDirectoryName(openFileDialog1.FileName);
             LoadFile(openFileDialog1.FileName);
         }
 
