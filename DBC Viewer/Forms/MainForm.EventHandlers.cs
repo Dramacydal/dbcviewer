@@ -20,6 +20,7 @@ namespace DBCViewer
             if (lastPath.Length > 0)
                 openFileDialog1.InitialDirectory = lastPath;
 
+            lastPath = "";
             if (openFileDialog1.ShowDialog() != DialogResult.OK)
                 return;
 
