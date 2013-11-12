@@ -312,10 +312,35 @@ namespace DBCViewer
         private void button2_Click(object sender, EventArgs e)
         {
             ListViewItem item;
+
+            string nameBase = "newField_";
+            string name;
+
+            int counter = 0;
+            do
+            {
+                bool contains = false;
+                name = nameBase + counter.ToString();
+                foreach (ListViewItem listItem in listView1.Items)
+                {
+                    if (listItem.SubItems[1].Text == name)
+                    {
+                        contains = true;
+                        ++counter;
+                        break;
+                    }
+                }
+                if (!contains)
+                    break;
+            } while (true);
+
+            item = new ListViewItem(new string[] { "0", name, "int", "False" });
+
             if (listView1.SelectedItems.Count > 0)
-                item = listView1.Items.Insert(listView1.SelectedItems[0].Index + 1, new ListViewItem(new string[] { "0", "newField", "int", "False" }));
+                item = listView1.Items.Insert(listView1.SelectedItems[0].Index + 1, item);
             else
-                item = listView1.Items.Add(new ListViewItem(new string[] { "0", "newField", "int", "False" }));
+                item = listView1.Items.Add(item);
+
             item.Selected = true;
             m_changed = true;
         }
