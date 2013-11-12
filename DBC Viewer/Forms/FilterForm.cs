@@ -12,9 +12,9 @@ namespace DBCViewer
 
         private Object[] decimalOperators = new Object[]
         {
+            ComparisonType.Equal,
             ComparisonType.And,
             ComparisonType.AndNot,
-            ComparisonType.Equal,
             ComparisonType.NotEqual,
             ComparisonType.Less,
             ComparisonType.Greater
@@ -22,11 +22,11 @@ namespace DBCViewer
 
         private Object[] stringOperators = new Object[]
         {
+            ComparisonType.Contains,
             ComparisonType.Equal,
             ComparisonType.NotEqual,
             ComparisonType.StartWith,
-            ComparisonType.EndsWith,
-            ComparisonType.Contains
+            ComparisonType.EndsWith
         };
 
         private Object[] floatOperators = new Object[]
