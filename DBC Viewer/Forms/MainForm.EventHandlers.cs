@@ -180,6 +180,16 @@ namespace DBCViewer
                             else
                                 dataRow[j] = m_reader.StringTable[br.ReadInt32()];
                             break;
+                        case "intarray":
+                        {
+                            int columns = br.ReadByte();
+                            var sb = new StringBuilder();
+                            for (var c = 0; c < columns; ++c)
+                                sb.Append(br.ReadUInt32()).Append(", ");
+
+                            dataRow[j] = sb.ToString();
+                            break;
+                        }
                         default:
                             throw new ArgumentException(String.Format(CultureInfo.InvariantCulture, "Unknown field type {0}!", types[j]));
                     }
